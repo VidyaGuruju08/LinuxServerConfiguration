@@ -1,12 +1,14 @@
 # LinuxServerConfiguration
 
 ## Aim of this project ##
-* This project is a part of Udacity Nanodegree Full Stack. Explains how to secure and set up a Linux distribution on a virtual machine. * For that install and configure a web and database server to host a web application.
+* This project is a part of Udacity Nanodegree Full Stack. Explains how to secure and set up a Linux distribution on a virtual machine. 
+
+* For that install and configure a web and database server to host a web application.
 * The virtual private server is Amazon EC2. Open Amazon EC2 and login and click on open console and change server place to N.Virginia.
 * The database server is PostgreSQL.
 * Choose EC2 and Launch Instance and select Ubuntu Server 18.04 LTS..
 * Create a new pair and give your key-pair name with name: [private-key](https://github.com/VidyaGuruju08/LinuxServerConfiguration/blob/master/privateKey) and download it and then launch the instance. Then type this command in git:
-    $ ssh -i pj1429.pem ubuntu@3.91.205.99
+    $ ssh -i filename.pem ubuntu@3.91.205.99
 * 22 is Port by Default,Later we need to Change 2200.
 * Public IP Address : 3.91.205.99
 * Accessable Port : 2200
@@ -14,7 +16,7 @@
 ## Steps to configure Linux server ##
 
 1. Create a new folder and paste the downloaded pem file.
-2. Open it by using a command ssh -i pj1429.pem ubuntu@3.91.205.99 .
+2. Open it by using a command ssh -i filename.pem ubuntu@3.91.205.99 .
 3. Now, Update and upgrade installed packages
    * $ sudo apt-get update
    * $ sudo apt-get upgrade
@@ -28,7 +30,7 @@
 7. Change inbound rules in Amazon EC2 for that:
    * click on edit and add 3 rules i.e,add port SSh 2200, Http port 80, NTP port 123 and save.
 8. To check port 2200: Working or Not
-   * $ ssh -i pj1429.pem -p 2200 ubuntu@3.91.205.99
+   * $ ssh -i filename.pem -p 2200 ubuntu@3.91.205.99
 9. Configure Firewall (UFW)
    * $ sudo ufw status
    * $ sudo ufw default deny incoming
@@ -62,7 +64,7 @@
 9. Check in vi /etc/ssh/sshd_config file if PermitRootLogin is set to No
 10. Restart SSH: sudo service ssh restart
 11. Check whether grader account Working or Not using command :
-   * $ ssh -i pj1429.pem -p 2200 grader@3.91.205.99
+   * $ ssh -i filename.pem -p 2200 grader@3.91.205.99
 
 ## Set the time zone for grader##
 1. To set time zone for grader the command as follows
@@ -103,12 +105,13 @@
 1. Now install git using command:
    * $ sudo apt-get install git
 2. Change the directory to www cd /var/www.
-3. Then clone and setup the Item Catalog project from sudo git clone url_link(https://github.com/VidyaGuruju08/catalog.git).
-   Now change the ownership of the catalog directory to grader using:
+3. Then clone and setup the Item Catalog project from sudo git clone [url_link](https://github.com/VidyaGuruju08/catalog.git).
+4. Now change the ownership of the catalog directory to grader using:
    * $ sudo chown -R grader:grader catalog
-4. Change to the /var/www/catalog/catalog directory. Then rename the Cproject.py file to init.py using:
+5. Change to the /var/www/catalog/catalog directory. 
+6. Then rename the Cproject.py file to init.py using:
    * $ mv Cproject.py init.py.
-5. We need to change the engine from sqlite to postgresql:
+7. We need to change the engine from sqlite to postgresql:
 ```
 engine = create_engine("sqlite:///catalog.db")
 engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
@@ -126,8 +129,8 @@ engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 5. In login.html change the old client ID with new client ID and also change the old client_secrets.json file with new                      client_secrets.json
 6. Configure and enable new virtual host
 ```
-    ServerName ---------------.xip.io
-    ServerAlias ec2---------------.compute-1.amazonaws.com
+    ServerName IPAddress.xip.io
+    ServerAlias ec2-3-91-205-99.compute-1.amazonaws.com
     ServerAdmin ubuntu@54.210.140.47
     WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/catalog/venv/lib/python3.6/site-packages
     WSGIProcessGroup catalog
@@ -170,6 +173,7 @@ engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
    * $ . venv3/bin/activate
 6. Install the following dependencies in virtual environment:
 ```
+    $ sudo apt-get install python-pip
     $ pip install httplib2
     $ pip install requests
     $ pip install --upgrade oauth2client
