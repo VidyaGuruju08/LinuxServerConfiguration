@@ -5,7 +5,7 @@
 * The virtual private server is Amazon EC2. Open Amazon EC2 and login and click on open console and change server place to N.Virginia.
 * The database server is PostgreSQL.
 * Choose EC2 and Launch Instance and select Ubuntu Server 18.04 LTS..
-* Create a new pair and give your key-pair name with name:pj1429.pem and download it and then launch the instance. Then type this command in git:
+* Create a new pair and give your key-pair name with name: [private-key](https://github.com/VidyaGuruju08/LinuxServerConfiguration/blob/master/privateKey) and download it and then launch the instance. Then type this command in git:
     $ ssh -i pj1429.pem ubuntu@3.91.205.99
 * 22 is Port by Default,Later we need to Change 2200.
 * Public IP Address : 3.91.205.99
