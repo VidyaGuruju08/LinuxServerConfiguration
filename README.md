@@ -219,4 +219,10 @@ engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 ```
 17. Now, you can open web-broser or as (http://3.91.205.99.xip.io)
 
-* I took the help of my mentor instructions and used refernces of some github README notes and udacity videos.
+* I took the help of my mentor instructions.
+* Refernces from some github README notes and udacity videos.
+* Online Resources:
+ - Flask Framework: http://flask.pocoo.org/
+ - Deployment: https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+ - YouTube: https://www.youtube.com/watch?v=f28nZ2ubYFk
+ - Stack Overflow: https://stackoverflow.com/
