@@ -13,6 +13,17 @@
 * Public IP Address : 3.91.205.99
 * Accessable Port : 2200
 
+## Software Installation and Dependencies:
+
+    * sudo apt-get install python-pip
+    * pip install httplib2
+    * pip install requests
+    * pip install --upgrade oauth2client
+    * pip install sqlalchemy
+    * pip install flask
+    * sudo apt-get install libpq-dev
+    * pip install psycopg2-binary
+
 ## Steps to configure Linux server ##
 
 1. Create a new folder and paste the downloaded pem file.
@@ -128,7 +139,9 @@ engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 4. You will then be able to get the client ID.
 5. In login.html change the old client ID with new client ID and also change the old client_secrets.json file with new                      client_secrets.json
 6. Configure and enable new virtual host
+
 ```
+<VirtualHost *:80>
     ServerName IPAddress.xip.io
     ServerAlias ec2-3-91-205-99.compute-1.amazonaws.com
     ServerAdmin ubuntu@54.210.140.47
